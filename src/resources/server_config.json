@@ -1,0 +1,16 @@
+{
+    "server_config":[
+        {
+            "endpoint": "/AdServer",
+            "module": "AdServer",
+            "channel_size":500,
+            "receiver_threads_count": 10
+        },
+        {
+            "endpoint": "/PMP",
+            "module": "PMP",
+            "channel_size":100,
+            "receiver_threads_count": 1
+        }
+    ]
+}

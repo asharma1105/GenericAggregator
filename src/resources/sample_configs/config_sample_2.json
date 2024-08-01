@@ -1,0 +1,30 @@
+{
+    "schema" : {
+        "position1": "int",
+        "position2": "int",
+        "position3": "int",
+        "position4": "string",
+        "nestedJson": {
+          "position5": "string",
+          "position6": "string"
+        },
+        "nestedArray": [
+          {
+            "position7": "int",
+            "position8": "int",
+            "position9": "int"
+          }
+        ]
+    },
+    "aggregations":[
+        {
+          "interval" : "",
+            "keys" : ["position1", "position4"],
+            "output_key": "result14"
+        },
+        {
+            "keys" : ["position1", "position5", "position6"],
+            "output_key": "result156"
+        }
+    ]
+}

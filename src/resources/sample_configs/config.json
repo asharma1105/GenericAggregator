@@ -1,0 +1,137 @@
+[
+    {
+        "module":"Module1",
+        "version":"1.0",
+        "schema" : {
+            "type": "object",
+            "properties": {
+                "key1": {"type": "integer"},
+                "key2": {"type": "integer"},
+                "key3": {"type": "integer"},
+                "key4": {"type": "string"},
+                "key5": {"type": "integer"},
+                "key6": {"type": "integer"},
+                "key7": {"type": "integer"},
+                "key8": {"type": "integer"},
+                "key9": {"type": "integer"},
+                "key10": {"type": "string"},
+                "key11": {"type": "string"},
+                "key12": {"type": "integer"},
+                "key13": {"type": "integer"},
+                "key14": {"type": "string"}
+            },
+            "nestedkey": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "key1": {"type": "integer"},
+                        "key2": {"type": "integer"},
+                        "key3": {"type": "integer"},
+                        "key4": {"type": "integer"},
+                        "key5": {"type": "integer"},
+                        "key6": {"type": "integer"},
+                        "key7": {"type": "integer"},
+                        "key8": {"type": "integer"}
+                    }
+                }
+            }
+        },
+        "aggregations":[
+            {
+                "aggregationKeys": [
+                    {"key": "key1", "level": 0},
+                    {"key": "nestedkey.key4", "level": 1}
+                ],
+                "output_key": "agg_on_2_keys_5_min",
+                "operation": "count|sum|max|min",
+                "interval_in_mins":"5|30|60|1440"
+            },
+            {
+                "aggregationKeys": [
+                    {"key": "key3", "level": 0},
+                    {"key": "key10", "level": 0},
+                    {"key": "nestedkey.key2", "level": 1},
+                    {"key": "nestedkey.key3", "level": 1},
+                    {"key": "nestedkey.key4", "level": 1}
+                ],
+                "output_key": "agg_on_5_keys_30_min",
+                "operation": "count|sum|max|min",
+                "interval_in_mins":"5|30|60|1440"
+            },
+            {
+                "aggregationKeys": [
+                    {"key": "key3", "level": 0},
+                    {"key": "key5", "level": 0},
+                    {"key": "key7", "level": 0},
+                    {"key": "key9", "level": 0},
+                    {"key": "key13", "level": 0},
+                    {"key": "nestedkey.key2", "level": 1},
+                    {"key": "nestedkey.key3", "level": 1},
+                    {"key": "nestedkey.key5", "level": 1},
+                    {"key": "nestedkey.key6", "level": 1},
+                    {"key": "nestedkey.key7", "level": 1}
+                ],
+                "output_key": "agg_on_10_keys_60_min",
+                "operation": "count|sum|max|min",
+                "interval_in_mins":"5|30|60|1440"
+            }   
+        ]
+    },
+    {
+        "module":"Module2",
+        "version":"1.0",
+        "schema" : {
+            "type": "object",
+            "properties": {
+                "key1": {"type": "integer"},
+                "key2": {"type": "integer"},
+                "key3": {"type": "string"},
+                "key4": {"type": "integer"},
+                "key5": {"type": "integer"},
+                "key6": {"type": "integer"},
+                "key7": {"type": "integer"},
+                "key8": {"type": "integer"}
+            },
+            "nestedkey1":{
+                "type": "object",
+                "properties": {
+                    "key1": {"type": "integer"},
+                    "key2": {"type": "string"},
+                    "key3": {"type": "string"},
+                    "key4": {"type": "integer"},
+                    "key5": {"type": "integer"},
+                    "key6": {"type": "string"}
+                }
+            },
+            "nestedkey2": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "key1": {"type": "integer"},
+                        "key2": {"type": "integer"},
+                        "key3": {"type": "integer"},
+                        "key4": {"type": "integer"},
+                        "key5": {"type": "integer"},
+                        "key6": {"type": "integer"},
+                        "key7": {"type": "integer"},
+                        "key8": {"type": "integer"}
+                    }
+                }
+            }
+        },
+        "aggregations":[
+            {
+                "aggregationKeys": [
+                    {"key": "key1", "level": 0},
+                    {"key": "nested_key1.key1", "level": 1},
+                    {"key": "nested_key2.key1", "level": 1}
+                ],
+                "output_key": "agg_on_3_keys_1440_min",
+                "operation": "count|sum|max|min",
+                "interval_in_mins":"5|30|60|1440"
+            }   
+        ]
+    }
+]

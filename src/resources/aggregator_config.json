@@ -1,0 +1,57 @@
+[
+  {
+    "module":"AdServer",
+    "schema" : {
+      "type": "object",
+      "properties": {
+        "ts": {"type": "integer"},
+        "pId": {"type": "integer"},
+        "sId": {"type": "integer"},
+        "dc": {"type": "string"},
+        "gID": {"type": "integer"},
+        "PB": {"type": "integer"},
+        "pfi": {"type": "integer"},
+        "imprCnt": {"type": "integer"},
+        "rqAdtype": {"type": "integer"},
+        "gctry": {"type": "string"},
+        "greg": {"type": "string"},
+        "uid": {"type": "integer"},
+        "mid": {"type": "integer"},
+        "sURL": {"type": "string"},
+        "cmpg": {
+          "type": "object",
+          "properties": {
+              "imprIdx": {"type": "integer"},
+              "id": {"type": "integer"},
+              "adszId": {"type": "integer"},
+              "cookied": {"type": "integer"},
+              "rnk": {"type": "integer"},
+              "csim": {"type": "integer"},
+              "css": {"type": "integer"},
+              "cadtype": {"type": "integer"}
+          }
+        }
+      }
+    },
+    "aggregations":[
+      {
+          "aggregation_keys": [
+              {"key": "pId", "level": 0},
+              {"key": "cmpg.rnk", "level": 1}
+          ],
+          "output_key": "agg_pid_cmpg_rank",
+          "operation": "count",
+          "interval_in_mins":1
+      },
+      {
+        "aggregation_keys": [
+            {"key": "greg", "level": 0},
+            {"key": "cmpg.adszId", "level": 1}
+        ],
+        "output_key": "agg_greg_cmpg_adszId",
+        "operation": "count",
+        "interval_in_mins":5
+      }    
+    ]
+  }
+]

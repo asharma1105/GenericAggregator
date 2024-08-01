@@ -1,0 +1,86 @@
+[
+  {
+    "module":"AdServer",
+    "schema" : {
+      "ts": "int",
+      "pId": "int",
+      "sId": "int",
+      "dc": "string",
+      "gID": "int",
+      "PB": "int",
+      "pfi": "int",
+      "imprCnt": "int",
+      "rqAdtype": "int",
+      "gctry": "string",
+      "greg": "string",
+      "uid": "int",
+      "mid": "int",
+      "sURL": "string",
+      "cmpg": [
+          {
+              "imprIdx": "int",
+              "id": "int",
+              "adszId": "int",
+              "cookied": "int",
+              "rnk": "int",
+              "csim": "int",
+              "css": "int",
+              "cadtype": "int"
+          }
+      ]
+    },
+    "aggregations":[
+      {
+          "aggregationKeys": [
+              {"key": "pid", "level": 0},
+              {"key": "cmpg.rnk", "level": 1}
+          ],
+          "output_key": "agg_pid_cmpg_rank",
+          "operation": "count",
+          "interval_in_mins":2
+      }   
+    ]
+  },
+  {
+    "module":"PMP",
+    "schema" : {
+      "ts": "int",
+      "pId": "int",
+      "sId": "int",
+      "dc": "string",
+      "gID": "int",
+      "PB": "int",
+      "pfi": "int",
+      "imprCnt": "int",
+      "rqAdtype": "int",
+      "gctry": "string",
+      "greg": "string",
+      "uid": "int",
+      "mid": "int",
+      "sURL": "string",
+      "cmpg": [
+          {
+              "imprIdx": "int",
+              "id": "int",
+              "adszId": "int",
+              "cookied": "int",
+              "rnk": "int",
+              "csim": "int",
+              "css": "int",
+              "cadtype": "int"
+          }
+      ]
+    },
+    "aggregations":[
+      {
+          "aggregationKeys": [
+              {"key": "pid", "level": 0},
+              {"key": "cmpg.rnk", "level": 1}
+          ],
+          "output_key": "agg_pid_cmpg_rank",
+          "operation": "count",
+          "interval_in_mins":2
+      }   
+    ]
+  }
+]
